@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--IoC container
+        Декларуємо об'єкти: зброя та щити -->
+    <bean id="sword" class="Weapon">
+        <constructor-arg value="15"/>
+    </bean>
+
+    <bean id="axe" class="Weapon">
+        <constructor-arg value="20"/>
+    </bean>
+
+    <bean id="mace" class="Weapon">
+        <constructor-arg value="25"/>
+    </bean>
+
+    <bean id="smallShield" class="Shield">
+        <constructor-arg value="5"/>
+    </bean>
+
+    <bean id="bigShield" class="Shield">
+        <constructor-arg value="10"/>
+    </bean>
+
+    <!-- Створюємо гладіаторів з полями, що відповідають задекларованим вище зброї та щитам (DI) -->
+    <bean id="arnold" class="Gladiator">
+        <property name="health" value="50"/>
+        <property name="weapon" ref="sword"/>
+        <property name="shield" ref="bigShield"/>
+        <property name="name" value="Arnold"/>
+    </bean>
+
+    <bean id="jason" class="Gladiator">
+        <property name="health" value="75"/>
+        <property name="weapon" ref="axe"/>
+        <property name="shield" ref="smallShield"/>
+        <property name="name" value="Jason"/>
+    </bean>
+
+    <bean id="raoh" class="Gladiator">
+        <property name="health" value="100"/>
+        <property name="weapon" ref="mace"/>
+        <property name="shield" ref="bigShield"/>
+        <property name="name" value="Raoh"/>
+    </bean>
+
+    <bean id="ein" class="Gladiator">
+        <property name="health" value="60"/>
+        <property name="weapon" ref="mace"/>
+        <property name="shield" ref="smallShield"/>
+        <property name="name" value="Ein"/>
+    </bean>
+</beans>
